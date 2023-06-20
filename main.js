@@ -19,3 +19,5 @@ setInterval(() => {
      document.querySelector('.day').textContent = day;
      document.querySelector('.month').textContent = month;
 }, 2000);
+
+//unlocking
