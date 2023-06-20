@@ -1,0 +1,43 @@
+*{
+     padding: none;
+     margin: none;
+     box-sizing: border-box;
+     user-select: none;
+}
+body{
+     background-color: rgb(24, 24, 24);
+     color: rgb(200, 200, 200);
+     padding: 0;
+}
+.banner,
+.newsBox{
+     background-color: rgb(61, 51, 51);
+     color: rgb(200, 200, 200);
+     padding: 20px;
+     text-align: center;
+}
+.spaceEvenBoxParent{
+     background-color: rgb(24, 24, 24);
+     color: rgb(200, 200, 200);
+     padding: 20px;
+     display: flex;
+     justify-content: space-evenly;
+}
+.spaceEvenBox{
+     background-color: rgb(61, 51, 51);
+     padding: 20px;
+     width: 24.25%;
+}
+button{
+     width: 100%;
+     border: none;
+     outline: none;
+     color: rgb(200, 200, 200);
+     border-bottom: 2px solid rgb(200, 200, 200);
+     text-align: left;
+     background: none;
+     padding: 6px;
+}
+button:hover{
+     background-color: rgb(24, 24, 24);
+}
