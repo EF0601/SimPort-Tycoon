@@ -65,6 +65,8 @@ function unlock(thing){
                 if (month >= 2 && money >= 200) {
                     money = money - 200;
                     document.querySelector('.news').textContent = "SimPort, LLC just unlocked Advanced Taxis! Onlookers look forward to higher income."
+                    unlocked.advancedTaxi = true;
+                    unlockBoxes.advancedTaxi.style.display = "none";
                 }
                }
                break;
@@ -73,6 +75,8 @@ function unlock(thing){
                 if (month >= 4 && money >= 400) {
                     money = money - 400;
                     document.querySelector('.news').textContent = "SimPort, LLC just unlocked Buses! Onlookers look forward to higher income."
+                    unlocked.bus = true;
+                    unlockBoxes.bus.style.display = "none";
                 }
                }
                break;
@@ -81,6 +85,8 @@ function unlock(thing){
                 if (month >= 6 && money >= 600) {
                     money = money - 600;
                     document.querySelector('.news').textContent = "SimPort, LLC just unlocked Advanced Buses! Onlookers look forward to higher income."
+                    unlocked.advancedBus = true;
+                    unlockBoxes.advancedBus.style.display = "none";
                 }
                }
                break;
@@ -113,14 +119,37 @@ function updateUnlockValidity() {
 function getAsset(asset){
      switch (asset) {
           case 'basicTaxi':
-               assets.taxis++;
-               money = money - 120;
+               if(money >= 120){
+                    assets.taxis++;
+                    money = money - 120;
+               }
+               
                break;
-          
+          case 'advTaxi':
+               if(unlocked.advancedTaxi === true && money >= 250){
+                    assets.advancedTaxis++;
+                    money = money - 250;
+               }
+               
+               break;
+          case 'basicBus':
+               if (unlocked.bus === true && money >= 280) {
+                    assets.buses++;
+                    money = money - 280;
+               }
+               
+               break;
+          case 'advBus':
+               if (unlocked.advancedBus === true && money >= 580) {
+                   assets.advancedBuses++;
+                    money = money - 580; 
+               }
+               break;
           default:
                break;
      }
      document.querySelector('.money').textContent = money;
+     updateAmount();
 }
 
 //income from vehicles
@@ -141,6 +170,15 @@ function bus(){
   for(var v = 0; v < assets.advancedBuses; v++){
     money = money + (6 * Math.floor(Math.random() * (assets.advancedBusPaxCapacity + assets.busPopularity + 1)));
   }
+}
+
+//update amounts
+function updateAmount(){
+     document.querySelector('.basicTaxiAmount').textContent = assets.taxis;
+     document.querySelector('.advancedTaxiAmount').textContent = assets.advancedTaxis;
+
+     document.querySelector('.basicBusAmount').textContent = assets.buses;
+     document.querySelector('.advancedBusAmount').textContent = assets.advancedBuses;
 }
 
 //on start
