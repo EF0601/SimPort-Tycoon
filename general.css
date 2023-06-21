@@ -41,3 +41,7 @@ button{
 button:hover{
      background-color: rgb(24, 24, 24);
 }
+.specialBTN{
+     width: 22.33%;
+     text-align: center;
+}

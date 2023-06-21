@@ -15,6 +15,15 @@
         It's day <span class="day">1</span> of month
         <span class="month">1</span>
       </p>
+      <!-- <button class="specialBTN" onclick="setSpeed(500)">
+        Speed: 1 day per 0.5 seconds
+      </button>
+      <button class="specialBTN" onclick="setSpeed(1000)">
+        Speed: 1 day per second
+      </button>
+      <button class="specialBTN" onclick="setSpeed(2000)">
+        Speed: 1 day per 2 seconds
+      </button> -->
     </div>
     <div class="spaceEvenBoxParent">
       <div class="spaceEvenBox">
@@ -29,7 +38,7 @@
             Credits, or money, is the sole thing keeping the company alive.
             Treat it like your child, and only use it when you really need it.
           </p>
-          <h4>Balance: <span class="money"></span></h4>
+          <h4>Balance: <span class="money">500</span></h4>
           <button
             onclick="alert('Let me teach you something: money does not grow on trees!')"
           >
@@ -43,13 +52,15 @@
             amount of passenger capacity (thus less income), and has a higher
             running cost ($15 per taxi per month).
           </p>
-          <button class="basicTaxi">
-            Buy basic taxi ($120 at $4/passenger and $15 running cost per month)
-            You own <span class="basicTaxiAmount">0</span>
+          <button class="basicTaxi" onclick="getAsset('basicTaxi')">
+            Buy basic taxi ($120 at $4/passenger (max 4 passengers) and $15
+            running cost per month) You own
+            <span class="basicTaxiAmount">0</span>
           </button>
-          <button class="advancedTaxi">
-            Buy advanced taxi ($250 at $7/passenger and $30 running cost per
-            month) You own <span class="advancedTaxiAmount">0</span>
+          <button class="advancedTaxi" onclick="getAsset('advTaxi')">
+            Buy advanced taxi ($250 at $7/passenger (max 8 passengers) and $30
+            running cost per month) You own
+            <span class="advancedTaxiAmount">0</span>
           </button>
         </div>
         <div class="bus">
@@ -59,23 +70,27 @@
             is higher (thus more income), and has the same running cost as one
             of a taxi. ($15 per bus per month).
           </p>
-          <button class="basicBus">
-            Buy basic bus ($280 at $3/passenger and $15 running cost per month)
-            You own <span class="basicBusAmount">0</span>
+          <button class="basicBus" onclick="getAsset('basicBus')">
+            Buy basic bus ($280 at $3/passenger (max 20 passengers) and $15
+            running cost per month) You own
+            <span class="basicBusAmount">0</span>
           </button>
-          <button class="advancedBus">
-            Buy advanced bus ($580 at $6/passenger and $30 running cost per
-            month) You own <span class="advancedTaxiAmount">0</span>
+          <button class="advancedBus" onclick="getAsset('advBus')">
+            Buy advanced bus ($580 at $6/passenger (max 45 passengers) and $30
+            running cost per month) You own
+            <span class="advancedTaxiAmount">0</span>
           </button>
         </div>
       </div>
       <div class="spaceEvenBox">
         <h2>Research</h2>
-        <button class="advancedTaxiResearch">
+        <button class="advancedTaxiResearch" onclick="unlock('advTaxi')">
           Research Advanced Taxi ($200 & Month 2)
         </button>
-        <button class="basicBusResearch">Research Bus ($400 & Month 4)</button>
-        <button class="advancedBusResearch">
+        <button class="basicBusResearch" onclick="unlock('bus')">
+          Research Bus ($400 & Month 4)
+        </button>
+        <button class="advancedBusResearch" onclick="unlock('advBus')">
           Research Advanced Bus ($600 & Month 6)
         </button>
       </div>
