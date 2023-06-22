@@ -3,7 +3,7 @@ let month = 1;
 
 let money = 500;
 
-let speed = 1500;
+let speed = 2000;
 
 //assets values
 let assets = {
@@ -23,7 +23,7 @@ let assets = {
 }
 
 //day counter
-setInterval(() => {
+function dayMover1(){
      if(day != 30){
           day++;
      }
@@ -39,9 +39,13 @@ setInterval(() => {
      taxi();
      bus();
      updateUnlockValidity();
-}, speed);
+     setTimeout(dayMover2, speed/2);
+}
+function dayMover2(){
+     setTimeout(dayMover1, speed/2);
+}
 
-//speed setting [FAILED]
+//speed setting
 function setSpeed(target){
      speed = target;
 }
@@ -183,3 +187,4 @@ function updateAmount(){
 
 //on start
 updateUnlockValidity();
+setTimeout(dayMover1, 2000);
