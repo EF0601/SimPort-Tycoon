@@ -65,7 +65,7 @@ let unlockBoxes = {
 function unlock(thing){
      switch (thing) {
           case "advTaxi":
-               if (unlocked.advancedTaxi != true) {
+               if (unlocked.advancedTaxi != true && unlocked.taxi == true) {
                 if (month >= 2 && money >= 200) {
                     money = money - 200;
                     document.querySelector('.news').textContent = "SimPort, LLC just unlocked Advanced Taxis! Onlookers look forward to higher income."
@@ -85,7 +85,7 @@ function unlock(thing){
                }
                break;
                case "advBus":
-               if (unlocked.advancedBus != true) {
+               if (unlocked.advancedBus != true && unlocked.bus == true) {
                 if (month >= 6 && money >= 600) {
                     money = money - 600;
                     document.querySelector('.news').textContent = "SimPort, LLC just unlocked Advanced Buses! Onlookers look forward to higher income."

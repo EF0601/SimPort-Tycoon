@@ -4,10 +4,16 @@
      box-sizing: border-box;
      user-select: none;
 }
+/*font family*/
+@font-face {
+     font-family: orange-kid;
+     src: url(orange\ kid.otf);
+}
 body{
      background-color: rgb(24, 24, 24);
      color: rgb(200, 200, 200);
      padding: 0;
+     font-family: 'orange-kid';
 }
 .banner,
 .newsBox{
@@ -37,6 +43,7 @@ button{
      text-align: left;
      background: none;
      padding: 6px;
+     font-family: 'orange-kid';
 }
 button:hover{
      background-color: rgb(24, 24, 24);
