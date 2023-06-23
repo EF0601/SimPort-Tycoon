@@ -20,7 +20,7 @@ let assets = {
      //popularity, limiting passenger amount
      taxiPopularity: -2,
      busPopularity: -4,
-}
+};
 
 //day counter
 function dayMover1(){
@@ -33,9 +33,9 @@ function dayMover1(){
      }
      document.querySelector('.day').textContent = day;
      document.querySelector('.month').textContent = month;
-     
+
      document.querySelector('.money').textContent = money;
-     
+
      taxi();
      bus();
      updateUnlockValidity();
@@ -56,19 +56,19 @@ let unlocked = {
      advancedTaxi: false,
      bus: false,
      advancedBus: false,
-}
+};
 let unlockBoxes = {
      advancedTaxi: document.querySelector('.advancedTaxiResearch'),
      bus: document.querySelector('.basicBusResearch'),
      advancedBus: document.querySelector('.advancedBusResearch'),
-}
+};
 function unlock(thing){
      switch (thing) {
           case "advTaxi":
                if (unlocked.advancedTaxi != true && unlocked.taxi == true) {
                 if (month >= 2 && money >= 200) {
                     money = money - 200;
-                    document.querySelector('.news').textContent = "SimPort, LLC just unlocked Advanced Taxis! Onlookers look forward to higher income."
+                     addToNewsWaitlist("SimPort, LLC just unlocked Advanced Taxis! Onlookers look forward to higher income.");
                     unlocked.advancedTaxi = true;
                     unlockBoxes.advancedTaxi.style.display = "none";
                 }
@@ -78,7 +78,7 @@ function unlock(thing){
                if (unlocked.bus != true) {
                 if (month >= 4 && money >= 400) {
                     money = money - 400;
-                    document.querySelector('.news').textContent = "SimPort, LLC just unlocked Buses! Onlookers look forward to higher income."
+                     addToNewsWaitlist("SimPort, LLC just unlocked Buses! Onlookers look forward to higher income.");
                     unlocked.bus = true;
                     unlockBoxes.bus.style.display = "none";
                 }
@@ -88,7 +88,7 @@ function unlock(thing){
                if (unlocked.advancedBus != true && unlocked.bus == true) {
                 if (month >= 6 && money >= 600) {
                     money = money - 600;
-                    document.querySelector('.news').textContent = "SimPort, LLC just unlocked Advanced Buses! Onlookers look forward to higher income."
+                     addToNewsWaitlist("SimPort, LLC just unlocked Advanced Buses! Onlookers look forward to higher income.");
                     unlocked.advancedBus = true;
                     unlockBoxes.advancedBus.style.display = "none";
                 }
@@ -127,26 +127,26 @@ function getAsset(asset){
                     assets.taxis++;
                     money = money - 120;
                }
-               
+
                break;
           case 'advTaxi':
                if(unlocked.advancedTaxi === true && money >= 250){
                     assets.advancedTaxis++;
                     money = money - 250;
                }
-               
+
                break;
           case 'basicBus':
                if (unlocked.bus === true && money >= 280) {
                     assets.buses++;
                     money = money - 280;
                }
-               
+
                break;
           case 'advBus':
                if (unlocked.advancedBus === true && money >= 580) {
                    assets.advancedBuses++;
-                    money = money - 580; 
+                    money = money - 580;
                }
                break;
           default:
@@ -183,6 +183,29 @@ function updateAmount(){
 
      document.querySelector('.basicBusAmount').textContent = assets.buses;
      document.querySelector('.advancedBusAmount').textContent = assets.advancedBuses;
+}
+
+//news
+let newsWaitlist = [];
+setInterval(() => {
+     if (newsWaitlist.length !== 0) {
+          document.querySelector('.news').textContent = newsWaitlist[0];
+          if (newsWaitlist.length > 5) {
+               newsWaitlist.shift();
+          }
+          newsAlert();
+     }
+}, 4000);
+
+function addToNewsWaitlist(newsItem) {
+     newsWaitlist.push(newsItem);
+}
+
+function newsAlert() {
+     document.querySelector('.newsAlert').style.color = "yellow";
+     setTimeout(() => {
+          document.querySelector('.newsAlert').style.color = "rgb(200, 200, 200)";
+     }, 2000);
 }
 
 //on start
