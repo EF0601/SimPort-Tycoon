@@ -20,6 +20,9 @@ let assets = {
      //popularity, limiting passenger amount
      taxiPopularity: -2,
      busPopularity: -4,
+
+     taxiIncome: 0,
+     busIncome: 0,
 };
 
 //day counter
@@ -29,12 +32,25 @@ function dayMover1(){
      }
      else if(day >= 30){
           day = 1;
+          //running costs
+          money = money - (assets.taxis * 70);
+          money = money - (assets.advancedTaxis * 145);
+
+          money = money - (assets.buses * 115);
+          money = money - (assets.advancedBuses * 235);
+
+          cost = 0;
+          gains = 0;
+
           month++;
      }
      document.querySelector('.day').textContent = day;
      document.querySelector('.month').textContent = month;
 
      document.querySelector('.money').textContent = money;
+
+     document.querySelector('.runCost').textContent = monthRunCost();
+     document.querySelector('.income').textContent = monthlyGains();
 
      taxi();
      bus();
@@ -159,21 +175,25 @@ function getAsset(asset){
 //income from vehicles
 //taxi
 function taxi(){
-  for(var i = 0; i < assets.taxis; i++){
-    money = money + (4 * Math.floor(Math.random() * (assets.taxiPaxCapacity + assets.taxiPopularity + 1)));
-  }
-  for(var v = 0; v < assets.advancedTaxis; v++){
-    money = money + (7 * Math.floor(Math.random() * (assets.advancedTaxiPaxCapacity + assets.taxiPopularity + 1)));
-  }
+     let oldMoney = money;
+     for(var i = 0; i < assets.taxis; i++){
+          money = money + (4 * Math.floor(Math.random() * (assets.taxiPaxCapacity + assets.taxiPopularity + 1)));
+     }
+     for(var v = 0; v < assets.advancedTaxis; v++){
+          money = money + (7 * Math.floor(Math.random() * (assets.advancedTaxiPaxCapacity + assets.taxiPopularity + 1)));
+     }
+     assets.taxiIncome = money - oldMoney;
 }
 
 function bus(){
-  for(var i = 0; i < assets.buses; i++){
-    money = money + (3 * Math.floor(Math.random() * (assets.busPaxCapacity + assets.busPopularity + 1)));
-  }
-  for(var v = 0; v < assets.advancedBuses; v++){
-    money = money + (6 * Math.floor(Math.random() * (assets.advancedBusPaxCapacity + assets.busPopularity + 1)));
-  }
+     let oldMoney = money;
+     for(var i = 0; i < assets.buses; i++){
+          money = money + (3 * Math.floor(Math.random() * (assets.busPaxCapacity + assets.busPopularity + 1)));
+     }
+     for(var v = 0; v < assets.advancedBuses; v++){
+          money = money + (6 * Math.floor(Math.random() * (assets.advancedBusPaxCapacity + assets.busPopularity + 1)));
+     }
+     assets.busIncome = money - oldMoney;
 }
 
 //update amounts
@@ -190,9 +210,7 @@ let newsWaitlist = [];
 setInterval(() => {
      if (newsWaitlist.length !== 0) {
           document.querySelector('.news').textContent = newsWaitlist[0];
-          if (newsWaitlist.length > 5) {
-               newsWaitlist.shift();
-          }
+          newsWaitlist.shift();
           newsAlert();
      }
 }, 4000);
@@ -206,6 +224,26 @@ function newsAlert() {
      setTimeout(() => {
           document.querySelector('.newsAlert').style.color = "rgb(200, 200, 200)";
      }, 2000);
+}
+
+//Cost calculator
+let cost = 0;
+function monthRunCost() {
+     cost = 0;
+
+     cost = cost - (assets.taxis * 70);
+     cost = cost - (assets.advancedTaxis * 145);
+     cost = cost - (assets.buses * 115);
+     cost = cost - (assets.advancedBuses * 235);
+
+     return cost;
+}
+
+let gains = 0;
+function monthlyGains(){
+     gains = gains + assets.taxiIncome + assets.busIncome;
+     
+     return gains;
 }
 
 //on start

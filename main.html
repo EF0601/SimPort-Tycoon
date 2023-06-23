@@ -24,10 +24,9 @@
       <button class="specialBTN" onclick="setSpeed(2000)">
         Speed: 1 day per 2 seconds
       </button>
-    </div><br>
-    <div class="newsAlert">
-      ALERT: NEW NEWS! SCROLL DOWN FOR MORE
     </div>
+    <br />
+    <div class="newsAlert">ALERT: NEW NEWS! SCROLL DOWN FOR MORE</div>
     <div class="spaceEvenBoxParent">
       <div class="spaceEvenBox">
         <h2>Upgrades</h2>
@@ -53,15 +52,15 @@
           <p>
             Taxis are the cheapest way of transport, although there is a small
             amount of passenger capacity (thus less income), and has a higher
-            running cost ($15 per taxi per month).
+            running cost ($70 per taxi per month).
           </p>
           <button class="basicTaxi" onclick="getAsset('basicTaxi')">
-            Buy basic taxi ($120 at $4/passenger (max 4 passengers) and $15
+            Buy basic taxi ($120 at $4/passenger (max 4 passengers) and $70
             running cost per month) You own
             <span class="basicTaxiAmount">0</span>
           </button>
           <button class="advancedTaxi" onclick="getAsset('advTaxi')">
-            Buy advanced taxi ($250 at $7/passenger (max 8 passengers) and $30
+            Buy advanced taxi ($250 at $7/passenger (max 8 passengers) and $145
             running cost per month) You own
             <span class="advancedTaxiAmount">0</span>
           </button>
@@ -71,15 +70,15 @@
           <p>
             Busses, although more expensive than taxis, the passenger capacity
             is higher (thus more income), and has the same running cost as one
-            of a taxi. ($15 per bus per month).
+            of a taxi. ($105 per bus per month).
           </p>
           <button class="basicBus" onclick="getAsset('basicBus')">
-            Buy basic bus ($280 at $3/passenger (max 20 passengers) and $15
+            Buy basic bus ($280 at $3/passenger (max 20 passengers) and $115
             running cost per month) You own
             <span class="basicBusAmount">0</span>
           </button>
           <button class="advancedBus" onclick="getAsset('advBus')">
-            Buy advanced bus ($580 at $6/passenger (max 45 passengers) and $30
+            Buy advanced bus ($580 at $6/passenger (max 45 passengers) and $235
             running cost per month) You own
             <span class="advancedBusAmount">0</span>
           </button>
@@ -103,7 +102,12 @@
       </div>
       <div class="spaceEvenBox">
         <h2>Miscellaneous</h2>
-        <i>Coming soon!</i>
+        <p>
+          Predicted losses on running costs this month: $<span class="runCost"
+            >0</span
+          >
+        </p>
+        <p>Gains this month: $<span class="income">0</span></p>
       </div>
     </div>
     <div class="newsBox">
@@ -111,7 +115,7 @@
     </div>
     <br />
     <div class="newsBox">
-      <p>EF0601 Studios EST 2022 v0.9.0-BETA</p>
+      <p>EF0601 Studios EST 2022 v0.11.0-BETA</p>
       <p>
         Thanks to EF0601 as main director & main programmer and Guuuuest0001 as
         side programmer and play tester
