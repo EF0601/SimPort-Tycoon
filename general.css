@@ -60,3 +60,16 @@ button:hover{
      padding: 4px;
      font-size: large;
 }
+.loan{
+     border: 5px solid yellow;
+     padding: 20px;
+}
+.loan input{
+     width: 90%;
+     border: none;
+     border-bottom: 2px solid yellowgreen;
+     background: none;
+     color: white;
+     font-family: 'orange-kid';
+     outline: none;
+}

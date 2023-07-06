@@ -102,12 +102,34 @@
       </div>
       <div class="spaceEvenBox">
         <h2>Miscellaneous</h2>
+        <h3>Predictions</h3>
         <p>
           Predicted losses on running costs this month: $<span class="runCost"
             >0</span
           >
         </p>
         <p>Gains this month: $<span class="income">0</span></p>
+        <h3>Loans</h3>
+        <div class="loan">
+          $<input
+            type="number"
+            class="loanAmount"
+            placeholder="Min: 30; Max: 100000;"
+            min="30"
+            max="100000"
+          />
+          <div class="validity">Everything is fine so far.</div>
+          <button class="setLoanBtn" onclick="verifyLoan()">
+            Set loan (12% interest + 30 days payment of $<span
+              class="dayPayment"
+            >
+            </span>
+            per day. for total of $<span class="loanTotal"></span> )
+          </button>
+          <button class="returnLoanBtn" onclick="payLoanNow()" disabled>
+            Pay loan now ($<span class="LeftToPay"></span>)
+          </button>
+        </div>
       </div>
     </div>
     <div class="newsBox">
@@ -115,7 +137,7 @@
     </div>
     <br />
     <div class="newsBox">
-      <p>EF0601 Studios EST 2022 v0.11.0-BETA</p>
+      <p>EF0601 Studios EST 2022 v0.12.1-BETA</p>
       <p>
         Thanks to EF0601 as main director & main programmer and Guuuuest0001 as
         side programmer and play tester

@@ -43,7 +43,11 @@ function dayMover1(){
           gains = 0;
 
           month++;
+
+          
+
      }
+     money = Math.floor(money);
      document.querySelector('.day').textContent = day;
      document.querySelector('.month').textContent = month;
 
@@ -51,6 +55,8 @@ function dayMover1(){
 
      document.querySelector('.runCost').textContent = monthRunCost();
      document.querySelector('.income').textContent = monthlyGains();
+
+     payLoan();
 
      taxi();
      bus();
@@ -244,6 +250,63 @@ function monthlyGains(){
      gains = gains + assets.taxiIncome + assets.busIncome;
      
      return gains;
+}
+
+//loans
+let loans = {
+     setLoanBtn: document.querySelector('.setLoanBtn'),
+     returnLoanBtn: document.querySelector('.returnLoanBtn'),
+     input: document.querySelector('.loanAmount'),
+     validity: document.querySelector('.validity'),
+
+     dailyCost: 0,
+     loan: 0,
+     leftToPay: 0,
+}
+
+function verifyLoan(){
+     if(loans.input.value < 30 || loans.input.value > 100000){
+          loans.validity.textContent = "Your loan value is too high or too low."
+     }
+     else{
+          
+          loans.loan = Math.floor(loans.input.value * 1.12);
+          money = money + loans.loan / 1.12;
+          loans.dailyCost = Math.floor(loans.loan/30);
+
+          loans.leftToPay = loans.loan;
+
+          document.querySelector('.dayPayment').textContent = loans.dailyCost;
+          document.querySelector('.loanTotal').textContent = loans.leftToPay;
+
+          loans.input.disabled = true;
+          loans.setLoanBtn.disabled = true;
+          loans.returnLoanBtn.disabled = false;
+     }
+}
+
+function payLoan(){
+     if(loans.leftToPay > 0){
+          if(loans.leftToPay - loans.dailyCost >= 0){
+               loans.leftToPay = loans.leftToPay - loans.dailyCost;
+               money = money - loans.dailyCost;
+               document.querySelector('.LeftToPay').textContent = loans.leftToPay;
+          }
+          else{
+               money = money - loans.leftToPay;
+               loans.leftToPay = 0;
+          }
+     }
+}
+
+function payLoanNow(){
+     money = money - loans.leftToPay;
+     loans.loan = 0;
+     loans.leftToPay = 0;
+
+     loans.input.disabled = false;
+     loans.setLoanBtn.disabled = false;
+     loans.returnLoanBtn.disabled = true;
 }
 
 //on start
